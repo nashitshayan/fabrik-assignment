@@ -1,0 +1,54 @@
+:root {
+	--clr--primary: #121212;
+	--clr--secondary: #242424;
+	--clr--neutral: rgb(229, 229, 229);
+	--clr--accent: #363636;
+	--clr-muted: #6c757d;
+}
+
+body {
+	/* display: flex;
+	justify-content: center;
+	align-items: center; */
+}
+img {
+	width: 100%;
+}
+.App {
+	min-height: 100vh;
+	border: 3px solid red;
+	background-color: aqua;
+	color: var(--clr--neutral);
+}
+.logo {
+	width: 10em;
+}
+nav {
+	padding: 3em;
+	background-color: var(--clr--secondary);
+	display: flex;
+	flex-direction: column;
+	gap: 1.5em;
+	justify-content: space-around;
+	align-items: center;
+}
+@media only screen and (min-width: 501px) {
+	nav {
+		flex-direction: row;
+	}
+}
+.btn-upload-model {
+	padding: 0.5em;
+	border-radius: 6px;
+	background-color: var(--clr--primary);
+	color: var(--clr--neutral);
+	border: 1px solid var(--clr--neutral);
+	font-size: 1rem;
+	cursor: pointer;
+}
+.btn-upload-model:hover {
+	background-color: var(--clr--accent);
+}
+main {
+	background-color: var(--clr--primary);
+}
