@@ -1,12 +1,11 @@
 import React, { useEffect } from 'react';
 import ModelViewer from './Models/ModelViewer';
-import models from './Models/importModels';
+
 import { BiRightArrow, BiDownArrow } from 'react-icons/bi';
 function Card({ model, id, isClickHandler }) {
 	const openModel = () => {
 		isClickHandler(id);
 	};
-	const path = model.url ? model.url : models[`${model.name}.glb`];
 	return (
 		<>
 			<div className='card' onClick={openModel}>
@@ -19,7 +18,7 @@ function Card({ model, id, isClickHandler }) {
 			</div>
 			{model.isOpen && (
 				<div className='model'>
-					<ModelViewer scale='50' modelPath={path} />
+					<ModelViewer scale='50' modelPath={model.url} />
 				</div>
 			)}
 		</>
