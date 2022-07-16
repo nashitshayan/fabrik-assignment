@@ -25,6 +25,10 @@ function App() {
 	const [progess, setProgess] = useState(0);
 	const [models, setModels] = useState(modelList);
 
+	useEffect(() => {
+		if (progess === 100) setProgess(0);
+	}, [progess]);
+
 	//get realtime model list from firestore
 	useEffect(() => {
 		onSnapshot(doc(db, 'files', '3d-models'), (doc) => {

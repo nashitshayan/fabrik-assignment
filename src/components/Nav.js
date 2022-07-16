@@ -1,5 +1,6 @@
 import { useRef } from 'react';
 import logo from '../images/fabrik_full_logo.png';
+import ProgressBar from './ProgressBar';
 function Nav({ uploadFileHandler, uploadProgress }) {
 	const hiddenFileInput = useRef(null);
 	const handleClick = (e) => {
@@ -9,15 +10,17 @@ function Nav({ uploadFileHandler, uploadProgress }) {
 		const fileUploaded = e.target.files[0];
 		uploadFileHandler(fileUploaded);
 	};
+
 	return (
 		<nav>
 			<div>
 				<img src={logo} alt='logo' className='logo' />
 			</div>
-			<div>
+			<div style={{ position: 'relative' }}>
 				<button className='btn-upload-model' onClick={handleClick}>
 					Upload 3D Model
 				</button>
+				{uploadProgress > 0 && <ProgressBar progress={uploadProgress} />}
 				<input
 					type='file'
 					ref={hiddenFileInput}
