@@ -6,21 +6,7 @@ function Card({ model, id, isClickHandler }) {
 	const openModel = () => {
 		isClickHandler(id);
 	};
-	useEffect(() => {
-		if (model.url) {
-			//console.log(model);
-			const fetchURL = async (url) => {
-				try {
-					const res = await fetch(url);
-					const data = await res.json();
-					console.log(data);
-				} catch (err) {
-					console.log(err);
-				}
-			};
-			fetchURL(model.url);
-		}
-	}, [model]);
+	const path = model.url ? model.url : models[`${model.name}.glb`];
 	return (
 		<>
 			<div className='card' onClick={openModel}>
@@ -31,10 +17,9 @@ function Card({ model, id, isClickHandler }) {
 					<BiRightArrow className='arrow-icon' />
 				)}
 			</div>
-
 			{model.isOpen && (
 				<div className='model'>
-					<ModelViewer scale='50' modelPath={models[`${model.name}.glb`]} />
+					<ModelViewer scale='50' modelPath={path} />
 				</div>
 			)}
 		</>

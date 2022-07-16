@@ -2,13 +2,8 @@ import '../styles/App.css';
 import Nav from './Nav';
 import Main from './Main';
 import { storage } from '../firebase';
-import {
-	ref,
-	uploadBytesResumable,
-	getDownloadURL,
-	getBytes,
-} from '@firebase/storage';
-import { useEffect, useState } from 'react';
+import { ref, uploadBytesResumable, getDownloadURL } from '@firebase/storage';
+import { useState } from 'react';
 const modelList = [
 	{ name: 'P1', isOpen: false },
 	{ name: 'P2', isOpen: false },
@@ -65,11 +60,6 @@ function App() {
 		);
 	};
 
-	// useEffect(() => {
-	// 	const listRef = ref(storage, '/files/P6.glb');
-	// 	getBytes(listRef).then((res) => console.log(res));
-	// }, []);
-	//uploadFileHandler={uploadFileHandler}
 	return (
 		<div className='App'>
 			<Nav uploadProgress={progess} uploadFileHandler={uploadFileHandler} />
