@@ -18,7 +18,6 @@ function Nav({ uploadFileHandler, uploadProgress }) {
 				<button className='btn-upload-model' onClick={handleClick}>
 					Upload 3D Model
 				</button>
-				{/* {uploadProgress > 0 && <div>{uploadProgress} % uploaded</div>} */}
 				<input
 					type='file'
 					ref={hiddenFileInput}

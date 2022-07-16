@@ -3,21 +3,19 @@
 	--clr--secondary: #242424;
 	--clr--neutral: rgb(229, 229, 229);
 	--clr--accent: #363636;
-	--clr-muted: #6c757d;
+	--clr--muted: #6c757d;
 }
-
+* {
+	box-sizing: border-box;
+}
 body {
-	/* display: flex;
-	justify-content: center;
-	align-items: center; */
+	background-color: var(--clr--primary);
 }
 img {
 	width: 100%;
 }
 .App {
 	min-height: 100vh;
-	border: 3px solid red;
-	background-color: aqua;
 	color: var(--clr--neutral);
 }
 .logo {
@@ -45,6 +43,8 @@ nav {
 	border: 1px solid var(--clr--neutral);
 	font-size: 1rem;
 	cursor: pointer;
+	transition: 0.2s ease-in-out;
+	padding: 1em;
 }
 .btn-upload-model:hover {
 	background-color: var(--clr--accent);
@@ -53,25 +53,25 @@ main {
 	background-color: var(--clr--primary);
 	max-width: 750px;
 	margin: 0 auto;
-	position: relative;
+	padding: 1em;
+	border: 1px solid var(--clr--accent);
 }
 
 .card {
 	background-color: var(--clr--accent);
 	padding: 1em;
-	margin: 1em;
+	margin-bottom: 1em;
 	cursor: pointer;
-	transition: 1s ease-in-out;
+	transition: 0.2s ease-in-out;
+	position: relative;
 }
 
 .card:hover {
 	background-color: var(--clr--secondary);
 }
 .model {
-	position: absolute;
-	top: 0;
-	background-color: var(--clr--secondary);
-	height: 100vh;
+	background-color: var(--clr--accent);
+	height: 600px;
 	width: 100%;
 }
 
@@ -79,4 +79,10 @@ main {
 	margin: 2em 0 0 2em;
 	transform: scale(2.5);
 	cursor: pointer;
+}
+.arrow-icon {
+	transform: scale(1.2);
+	position: absolute;
+	top: 30%;
+	right: 2%;
 }

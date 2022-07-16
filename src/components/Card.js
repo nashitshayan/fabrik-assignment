@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import ModelViewer from './Models/ModelViewer';
 import models from './Models/importModels';
-import { AiFillCloseCircle } from 'react-icons/ai';
+import { BiRightArrow, BiDownArrow } from 'react-icons/bi';
 function Card({ model, id, isClickHandler }) {
 	const openModel = () => {
 		isClickHandler(id);
@@ -10,12 +10,15 @@ function Card({ model, id, isClickHandler }) {
 		<>
 			<div className='card' onClick={openModel}>
 				{model.name}
+				{model.isOpen ? (
+					<BiDownArrow className='arrow-icon' />
+				) : (
+					<BiRightArrow className='arrow-icon' />
+				)}
 			</div>
 
 			{model.isOpen && (
 				<div className='model'>
-					<AiFillCloseCircle className='close-model-icon' onClick={openModel} />
-
 					<ModelViewer scale='50' modelPath={models[`${model.name}.glb`]} />
 				</div>
 			)}
