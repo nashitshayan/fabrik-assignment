@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import ModelViewer from './Models/ModelViewer';
 import models from './Models/importModels';
 import { BiRightArrow, BiDownArrow } from 'react-icons/bi';
@@ -6,6 +6,21 @@ function Card({ model, id, isClickHandler }) {
 	const openModel = () => {
 		isClickHandler(id);
 	};
+	useEffect(() => {
+		if (model.url) {
+			//console.log(model);
+			const fetchURL = async (url) => {
+				try {
+					const res = await fetch(url);
+					const data = await res.json();
+					console.log(data);
+				} catch (err) {
+					console.log(err);
+				}
+			};
+			fetchURL(model.url);
+		}
+	}, [model]);
 	return (
 		<>
 			<div className='card' onClick={openModel}>

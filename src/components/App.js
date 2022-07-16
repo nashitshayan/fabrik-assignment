@@ -35,34 +35,35 @@ function App() {
 			}),
 		);
 	};
-	// const uploadFileHandler = (file) => {
-	// 	console.log('file', file);
-	// 	if (!file) return;
-	// 	const storageRef = ref(storage, `/files/${file.name}`);
-	// 	const uploadTask = uploadBytesResumable(storageRef, file);
+	const uploadFileHandler = (file) => {
+		console.log('file', file);
+		if (!file) return;
+		const storageRef = ref(storage, `/files/${file.name}`);
+		const uploadTask = uploadBytesResumable(storageRef, file);
 
-	// 	uploadTask.on(
-	// 		'state_changed',
-	// 		(snapshot) => {
-	// 			const progess = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-	// 			setProgess(progess);
-	// 		},
-	// 		(err) => {
-	// 			alert(err);
-	// 		},
-	// 		() => {
-	// 			getDownloadURL(uploadTask.snapshot.ref).then((url) => {
-	// 				setModels((oldModels) => [
-	// 					...oldModels,
-	// 					{
-	// 						name: file.name,
-	// 						url: url,
-	// 					},
-	// 				]);
-	// 			});
-	// 		},
-	// 	);
-	// };
+		uploadTask.on(
+			'state_changed',
+			(snapshot) => {
+				const progess = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+				setProgess(progess);
+			},
+			(err) => {
+				alert(err);
+			},
+			() => {
+				getDownloadURL(uploadTask.snapshot.ref).then((url) => {
+					setModels((oldModels) => [
+						...oldModels,
+						{
+							name: file.name,
+							url: url,
+							isOpen: false,
+						},
+					]);
+				});
+			},
+		);
+	};
 
 	// useEffect(() => {
 	// 	const listRef = ref(storage, '/files/P6.glb');
@@ -71,7 +72,7 @@ function App() {
 	//uploadFileHandler={uploadFileHandler}
 	return (
 		<div className='App'>
-			<Nav uploadProgress={progess} />
+			<Nav uploadProgress={progess} uploadFileHandler={uploadFileHandler} />
 			<Main models={models} isClickHandler={isClickHandler} />
 		</div>
 	);
